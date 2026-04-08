@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="https://images.vexels.com/media/users/3/135555/isolated/preview/b45edb6f6eee6d71bcc54eb911e54f3b-icono-de-numeros-de-calculadora.png" type="image/png">
+  <title>Métodos Numéricos</title>
+  <link rel="stylesheet" href="style.css">
+
+  
+</head>
+<body>  
+    <div class="sidebar">
+        <div class="logo">Menu</div>
+      
+        <div class="menu-wrapper">
+          <div class="menu-section">
+            <a href="#inicio" class="submenu-link">Inicio</a>
+          </div>
+          <div class="menu-section">
+            <button class="menu-button" onclick="toggleSubmenu('cerrados')">Métodos Cerrados</button>
+            <div class="submenu" id="cerrados">
+              <a href="#biseccion">Método Bisección</a>
+              <a href="#falsa">Método Falsa Posición</a>
+            </div>
+          </div>
+      
+          <div class="menu-section">
+            <button class="menu-button" onclick="toggleSubmenu('abiertos')">Métodos Abiertos</button>
+            <div class="submenu" id="abiertos">
+              <a href="#puntofijo">Método Punto Fijo</a>
+              <a href="#newton">Método Newton Raphson</a>
+              <a href="#secante">Método Secante</a>
+            </div>
+          </div>
+      
+          <div class="menu-section">
+            <a href="#senl" class="submenu-link">Newton Raphson</a>
+          </div>
+          
+          <div class="menu-section">
+            <a href="#fin" class="submenu-link">Además...</a>
+          </div>
+        </div>
+      </div>
+
+<div class="main-content">
+
+  <section id="portada" style="min-height: 100vh; background: linear-gradient(to bottom, #e0f7fa, #ffffff); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 50px 20px; text-align: center;">
+  
+    <div style="animation: fadeInDown 1.2s ease-out;">
+      <h1 style="font-size: 48px; color: #004d40; margin-bottom: 20px;">Métodos Numéricos</h1>
+      <h2 style="font-size: 28px; color: #00796b; margin-bottom: 30px;">Aprende, Explora y Domina los Métodos de Cálculo Numérico</h2>
+    </div>
+  
+    <img src="https://cdn-icons-png.flaticon.com/512/3062/3062634.png" alt="Métodos Numéricos" style="width: 180px; margin-bottom: 40px; animation: float 3s ease-in-out infinite;">
+  
+    <p style="font-size: 20px; max-width: 800px; margin: 0 auto 40px; color: #555; line-height: 1.6;">
+      Explora los principales métodos para encontrar soluciones numéricas a problemas matemáticos, con un enfoque práctico, visual y amigable. ¡Aprende de forma sencilla y efectiva!
+    </p>
+  
+    <a href="#inicio" style="background-color: #004d40; color: white; padding: 14px 32px; font-size: 20px; font-weight: bold; text-decoration: none; border-radius: 10px; transition: background-color 0.3s, transform 0.3s;"
+       onmouseover="this.style.backgroundColor='#00796b'; this.style.transform='scale(1.05)';"
+       onmouseout="this.style.backgroundColor='#004d40'; this.style.transform='scale(1)';">
+      🚀 Comenzar
+    </a>
+  
+  </section>
+  
+  <!-- Sección de Inicio -->
+  <section id="inicio" class="inicio-scroll-section">
+    <div class="titulo-metodo">
+      Bienvenido a Métodos Numéricos
+    </div>
+  
+    <div class="inicio-contenido" style="padding: 40px 20px; display: flex; flex-direction: column; align-items: center; text-align: center; animation: fadeIn 1.5s ease-in;">
+      
+      <!-- Imagen principal -->
+      <img src="https://cdn-icons-png.flaticon.com/512/201/201623.png" alt="Métodos Numéricos" style="width: 140px; margin-bottom: 20px; animation: float 3s ease-in-out infinite;">
+  
+      <!-- Introducción -->
+      <h2 style="font-size: 34px; color: #004d40; margin-bottom: 15px;">Explora el Mundo de los Métodos Numéricos</h2>
+
+      <p style="font-size: 19px; max-width: 850px; margin-bottom: 20px; color: #555; line-height: 1.8;">
+        Este portal ha sido diseñado pensando en brindar a los usuarios una herramienta sencilla, interactiva y rápida para practicar los principales métodos numéricos de la asignatura. Aquí podrás aplicar los conceptos de forma clara y ordenada, con un enfoque práctico.
+      </p>
+      
+      <p style="font-size: 19px; max-width: 850px; margin-bottom: 20px; color: #555; line-height: 1.8;">
+        Dentro de la plataforma encontrarás métodos cerrados como <strong>Bisección</strong> y <strong>Falsa Posición</strong>, métodos abiertos como <strong>Punto Fijo</strong>, <strong>Newton-Raphson</strong> y <strong>Secante</strong>, así como el método <strong>Newton-Raphson para sistemas de ecuaciones no lineales (NR SENL)</strong>.
+      </p>
+      
+      <p style="font-size: 19px; max-width: 850px; margin-bottom: 30px; color: #555; line-height: 1.8;">
+        Nuestro objetivo es ofrecerte una plataforma intuitiva que combine teoría y práctica, facilitando tu aprendizaje mediante resultados visuales, tablas organizadas y un diseño amigable que simplifica el estudio de cada técnica.
+      </p>
+      
+      
+      <!-- Tarjetas Interactivas -->
+      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin-bottom: 40px;">
+  
+        <div style="background: #e0f7fa; border-radius: 12px; padding: 20px; width: 280px; transition: transform 0.4s; cursor: pointer;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+          <img src="https://cdn-icons-png.flaticon.com/512/1037/1037956.png" alt="Interactividad" style="width: 80px; margin-bottom: 10px;">
+          <h3 style="color: #00796b; font-size: 22px; margin-bottom: 10px;">¿Por qué usarlo?</h3>
+          <p style="font-size: 16px; color: #333;">✅ Interactivo y sencillo<br>✅ Resultados inmediatos<br>✅ Experiencia amigable</p>
+        </div>
+  
+        <div style="background: #d0f0c0; border-radius: 12px; padding: 20px; width: 280px; transition: transform 0.4s; cursor: pointer;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+          <img src="https://cdn-icons-png.flaticon.com/512/681/681611.png" alt="Ventajas" style="width: 80px; margin-bottom: 10px;">
+          <h3 style="color: #33691e; font-size: 22px; margin-bottom: 10px;">Ventajas</h3>
+          <p style="font-size: 16px; color: #333;">✅ Aprende practicando<br>✅ Visualiza iteraciones<br>✅ Ideal para reforzar conocimientos</p>
+        </div>
+  
+        <div style="background: #fff3e0; border-radius: 12px; padding: 20px; width: 280px; transition: transform 0.4s; cursor: pointer;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+          <img src="https://cdn-icons-png.flaticon.com/512/3062/3062634.png" alt="Resultados Claros" style="width: 80px; margin-bottom: 10px;">
+          <h3 style="color: #ff8f00; font-size: 22px; margin-bottom: 10px;">Resultados Claros</h3>
+          <p style="font-size: 16px; color: #333;">✅ Tablas organizadas<br>✅ Cálculos detallados<br>✅ Fácil seguimiento</p>
+        </div>
+  
+      </div>
+  
+      <!-- Objetivos -->
+      <div style="background: #f0f4c3; border-radius: 15px; padding: 30px; max-width: 900px; margin-bottom: 40px; animation: fadeIn 2s;">
+        <h3 style="color: #33691e; font-size: 26px; margin-bottom: 15px;">🎯 Objetivos de este Proyecto</h3>
+        <ul style="list-style: none; padding: 0; font-size: 18px; color: #555; text-align: left;">
+          <li>✅ Fomentar el aprendizaje práctico y visual de los métodos numéricos.</li>
+          <li>✅ Brindar una herramienta accesible y dinámica para la resolución de ejercicios.</li>
+          <li>✅ Permitir al usuario experimentar en tiempo real con los métodos clásicos como Bisección, Punto Fijo, Newton-Raphson y más.</li>
+          <li>✅ Desarrollar la intuición matemática mediante el análisis de resultados iterativos.</li>
+        </ul>
+      </div>
+  
+      <!-- Botón de acción -->
+      <a href="#biseccion" style="background-color: #004d40; color: white; padding: 14px 32px; font-size: 18px; font-weight: bold; text-decoration: none; border-radius: 10px; transition: background-color 0.3s, transform 0.3s;"
+         onmouseover="this.style.backgroundColor='#00796b'; this.style.transform='scale(1.05)';"
+         onmouseout="this.style.backgroundColor='#004d40'; this.style.transform='scale(1)';">
+        🚀 ¡Explora los métodos ahora!
+      </a>
+    </div>
+  </section>
+  
+  
+    <hr class="linea-seccion">
+    
+  <section id="biseccion" class="biseccion-scroll-section">
+    <hr class="linea-seccion">
+    <div class="titulo-metodo">
+      Metodo de Bisección
+    </div>
+    <div class="contenido-scroll">
+    <form action="http://127.0.0.1:5000/biseccion" method="POST">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="ejercicio">Ejercicio</label>
+          <input type="text" id="ejercicio" name="ejercicio">
+        </div>
+        <div class="form-group">
+          <label for="funcion">Funcion</label>
+          <input type="text" id="funcion" name="funcion">
+        </div>
+        <div class="form-group">
+          <label for="xa">X^a</label>
+          <input type="text" id="xa" name="xa">
+        </div>
+        <div class="form-group">
+          <label for="xb">X^b</label>
+          <input type="text" id="xb" name="xb">
+        </div>
+        <div class="form-group">
+          <label for="es">Es%</label>
+          <input type="text" id="es" name="es">
+        </div>
+      </div>
+      <div class="botones-biseccion">
+        <button type="button" onclick="buscarPorEjercicio(event)">🔍 Buscar</button>
+        <button onclick="eliminarEjercicio(event)">🗑️ Eliminar</button>
+        <button type="submit">🧮 Calcular</button>
+        <button onclick="actualizarEjercicio(event)">🔄 Actualizar</button>
+        
+      </div>
+      
+    </form>
+    <div class="tabla-contenedor">
+      <h2>Resultados del Método de Bisección</h2>
+      <div class="tabla-scroll">
+        <table id="tabla-resultados">
+          <thead>
+            <tr>
+              <th>Ejercicio</th>
+              <th>Iteración</th>
+              <th>X<sup>a</sup></th>
+              <th>X<sup>b</sup></th>
+              <th>f(X<sup>a</sup>)</th>
+              <th>f(X<sup>b</sup>)</th>
+              <th>X<sup>r</sup></th>
+              <th>f(X<sup>r</sup>)</th>
+              <th>Ea</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Aquí se insertan los datos -->
+          </tbody>
+        </table>
+      </div> 
+
+      <div style="margin-top: 20px; text-align: center;">
+        <button onclick="exportarTabla('tabla-resultados', 'biseccion_resultados.xlsx', 'Biseccion')" 
+                style="background-color: #004d40; color: white; padding: 10px 20px; border-radius: 8px; font-weight: bold; font-size: 16px; cursor: pointer; transition: background-color 0.3s;"
+                onmouseover="this.style.backgroundColor='#00796b'; this.style.transform='scale(1.05)';"
+                onmouseout="this.style.backgroundColor='#004d40'; this.style.transform='scale(1)';">
+          📄 Exportar a Excel
+        </button>
+      </div>
+      
+      <div style="margin-top: 30px; text-align: center;">
+        <button onclick="exportarTodo()" 
+                style="background-color: #004d40; color: white; padding: 12px 25px; border-radius: 10px; font-weight: bold; font-size: 18px; cursor: pointer; transition: background-color 0.3s;"
+                onmouseover="this.style.backgroundColor='#00796b'; this.style.transform='scale(1.05)';"
+                onmouseout="this.style.backgroundColor='#004d40'; this.style.transform='scale(1)';">
+          📚 Exportar TODO a un solo Excel
+        </button>
+      </div>
+      
+    </div>
+    <div style="text-align: center; margin-top: 30px;">
+      <img id="grafica-biseccion" src="" alt="Gráfica del método de bisección"
+           style="max-width: 100%; height: auto; border: 2px solid #ccc; padding: 10px; display: none;">
+    </div>
+    <div class="grafica-container">
+      <h2>Gráfica del Método de Bisección</h2>
+      <div class="selector">
+        <label for="ejercicioSelect">Seleccionar ejercicio:</label>
+        <select id="ejercicioSelect" onchange="cargarGrafica()">
+        </select>
+      </div>
+      <iframe id="grafica-interactiva" src="/static/imagenes/biseccion.html"></iframe>
+    </div>
+    
+  </section>
+
+
+
+
+  <section id="falsa" class="falsa-scroll-section">
+    <hr class="linea-seccion">
+    <div class="titulo-metodo">
+      Método de Falsa Posición
+    </div>
+    <div class="contenido-scroll">
+      <form action="http://127.0.0.1:5000/falsa-posicion" method="POST">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="ejercicio-falsa">Ejercicio</label>
+            <input type="text" id="ejercicio-falsa" name="ejercicio">
+          </div>
+          <div class="form-group">
+            <label for="funcion-falsa">Función</label>
+            <input type="text" id="funcion-falsa" name="funcion">
+          </div>
+          <div class="form-group">
+            <label for="xa-falsa">X<sup>a</sup></label>
+            <input type="text" id="xa-falsa" name="xa">
+          </div>
+          <div class="form-group">
+            <label for="xb-falsa">X<sup>b</sup></label>
+            <input type="text" id="xb-falsa" name="xb">
+          </div>
+          <div class="form-group">
+            <label for="es-falsa">Es%</label>
+            <input type="text" id="es-falsa" name="es">
+          </div>
+        </div>
+        <div class="botones-biseccion">
+          <button type="button" onclick="buscarPorEjercicioFalsa(event)">🔍 Buscar</button>
+          <button onclick="eliminarEjercicioFalsa(event)">🗑️ Eliminar</button>
+          <button type="submit">Calcular</button>
+          <button onclick="actualizarEjercicioFalsa(event)">🔄 Actualizar</button>
+        </div>
+      </form>
+  
+      <div class="tabla-contenedor">
+        <h2>Resultados del Método de Falsa Posición</h2>
+        <div class="tabla-scroll">
+          <table id="tabla-resultados-falsa">
+            <thead>
+              <tr>
+                <th>Ejercicio</th>
+                <th>Iteración</th>
+                <th>X<sup>a</sup></th>
+                <th>X<sup>b</sup></th>
+                <th>f(X<sup>a</sup>)</th>
+                <th>f(X<sup>b</sup>)</th>
+                <th>X<sup>r</sup></th>
+                <th>f(X<sup>r</sup>)</th>
+                <th>Ea</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Aquí se insertan los resultados -->
+            </tbody>
+          </table>
+        </div> 
+        <div style="margin-top: 20px; text-align: center;">
+          <button onclick="exportarTabla('tabla-resultados-falsa', 'falsa_posicion_resultados.xlsx', 'FalsaPosicion')" 
+                  style="background-color: #004d40; color: white; padding: 10px 20px; border-radius: 8px; font-weight: bold; font-size: 16px; cursor: pointer; transition: background-color 0.3s;"
+                  onmouseover="this.style.backgroundColor='#00796b'; this.style.transform='scale(1.05)';"
+                  onmouseout="this.style.backgroundColor='#004d40'; this.style.transform='scale(1)';">
+            📄 Exportar a Excel
+          </button>
+        </div>
+        
+      </div>
+      <div class="grafica-container">
+        <h2>Gráfica del Método de Falsa Posición</h2>
+        <div class="selector">
+          <label for="ejercicioSelectFalsa">Seleccionar ejercicio:</label>
+          <select id="ejercicioSelectFalsa" onchange="cargarGraficaFalsa()"></select>
+        </div>
+        <iframe id="grafica-interactiva-falsa" style="width:100%; height:500px; border:none;"></iframe>
+      </div>
+    </div>
+  </section>
+  
+
+
+  <section id="puntofijo" class="puntofijo-scroll-section">  
+    <hr class="linea-seccion">
+    <div class="titulo-metodo">
+      Método de Punto Fijo
+    </div>
+    <div class="contenido-scroll">
+      <form action="http://127.0.0.1:5000/punto-fijo" method="POST">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="ejercicio-puntofijo">Ejercicio</label>
+            <input type="text" id="ejercicio-puntofijo" name="ejercicio">
+          </div>
+          <div class="form-group">
+            <label for="funcion-puntofijo">g(x)</label>
+            <input type="text" id="funcion-puntofijo" name="funcion">
+          </div>
+          <div class="form-group">
+            <label for="x0-puntofijo">X<sub>0</sub></label>
+            <input type="text" id="x0-puntofijo" name="x0">
+          </div>
+          <div class="form-group">
+            <label for="es-puntofijo">Es%</label>
+            <input type="text" id="es-puntofijo" name="es">
+          </div>
+        </div>
+        <div class="botones-biseccion">
+          <button type="button" onclick="buscarPorEjercicioPuntoFijo(event)">🔍 Buscar</button>
+          <button onclick="eliminarEjercicioPuntoFijo(event)">🗑️ Eliminar</button>
+          <button type="submit">Calcular</button>
+          <button onclick="actualizarEjercicioPuntoFijo(event)">🔄 Actualizar</button>
+        </div>
+      </form>
+  
+      <div class="tabla-contenedor">
+        <h2>Resultados del Método de Punto Fijo</h2>
+        <div class="tabla-scroll">
+          <table id="tabla-resultados-puntofijo">
+            <thead>
+              <tr>
+                <th>Ejercicio</th>
+                <th>Iteración</th>
+                <th>X<sub>i</sub></th>
+                <th>g(X<sub>i</sub>)</th>
+                <th>Ea (%)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Aquí se insertan los datos de Punto Fijo -->
+            </tbody>
+          </table>
+        </div>
+        <div style="margin-top: 20px; text-align: center;">
+          <button onclick="exportarTabla('tabla-resultados-puntofijo', 'punto_fijo_resultados.xlsx', 'PuntoFijo')" 
+                  style="background-color: #004d40; color: white; padding: 10px 20px; border-radius: 8px; font-weight: bold; font-size: 16px; cursor: pointer; transition: background-color 0.3s;"
+                  onmouseover="this.style.backgroundColor='#00796b'; this.style.transform='scale(1.05)';"
+                  onmouseout="this.style.backgroundColor='#004d40'; this.style.transform='scale(1)';">
+            📄 Exportar a Excel
+          </button>
+        </div>
+                  <!-- Canvas donde se dibujará la gráfica -->
+          <div style="width: 90%; margin: 30px auto;">
+            <canvas id="grafica-biseccion"></canvas>
+          </div>
+      </div>
+      <div class="grafica-container">
+        <h2>Gráfica del Método de Punto Fijo</h2>
+        <div class="selector">
+          <label for="ejercicioSelectPuntoFijo">Seleccionar ejercicio:</label>
+          <select id="ejercicioSelectPuntoFijo" onchange="cargarGraficaPuntoFijo()"></select>
+        </div>
+        <iframe id="grafica-interactiva-puntofijo" src=""></iframe>
+      </div>
+      
+    </div>
+  </section>
+  
+
+
+  <section id="newton" class="newton-scroll-section">
+    <hr class="linea-seccion">
+    <div class="titulo-metodo">
+      Método de Newton-Raphson
+    </div>
+    <div class="contenido-scroll">
+      <form action="http://127.0.0.1:5000/newton-raphson" method="POST">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="ejercicio-newton">Ejercicio</label>
+            <input type="text" id="ejercicio-newton" name="ejercicio">
+          </div>
+          <div class="form-group">
+            <label for="funcion-newton">f(x)</label>
+            <input type="text" id="funcion-newton" name="funcion">
+          </div>
+          <div class="form-group">
+            <label for="derivada-newton">f'(x)</label>
+            <input type="text" id="derivada-newton" name="derivada">
+          </div>
+          <div class="form-group">
+            <label for="x0-newton">X<sub>0</sub></label>
+            <input type="text" id="x0-newton" name="x0">
+          </div>
+          <div class="form-group">
+            <label for="es-newton">Es%</label>
+            <input type="text" id="es-newton" name="es">
+          </div>
+        </div>
+        <div class="botones-biseccion">
+          <button onclick="eliminarEjercicioNewton(event)">🗑️ Eliminar</button>
+          <button type="submit">Calcular</button>
+          <button onclick="actualizarEjercicioNewton(event)">🔄 Actualizar</button>
+        </div>
+      </form>
+  
+      <div class="tabla-contenedor">
+        <h2>Resultados del Método de Newton-Raphson</h2>
+        <div class="tabla-scroll">
+          <table id="tabla-resultados-newton">
+            <thead>
+              <tr>
+                <th>Ejercicio</th>
+                <th>Iteración</th>
+                <th>X<sub>i</sub></th>
+                <th>f(X<sub>i</sub>)</th>
+                <th>f'(X<sub>i</sub>)</th>
+                <th>X<sub>i+1</sub></th>
+                <th>Ea (%)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Aquí se insertan los datos de Newton-Raphson -->
+            </tbody>
+          </table>
+        </div>
+        <div style="margin-top: 20px; text-align: center;">
+          <button onclick="exportarTabla('tabla-resultados-newton', 'newton_raphson_resultados.xlsx', 'NewtonRaphson')" 
+                  style="background-color: #004d40; color: white; padding: 10px 20px; border-radius: 8px; font-weight: bold; font-size: 16px; cursor: pointer; transition: background-color 0.3s;"
+                  onmouseover="this.style.backgroundColor='#00796b'; this.style.transform='scale(1.05)';"
+                  onmouseout="this.style.backgroundColor='#004d40'; this.style.transform='scale(1)';">
+            📄 Exportar a Excel
+          </button>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+  
+
+
+  <section id="secante" class="secante-scroll-section">
+    <hr class="linea-seccion">
+    <div class="titulo-metodo">
+      Método de la Secante
+    </div>
+    <div class="contenido-scroll">
+      <form action="http://127.0.0.1:5000/secante" method="POST">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="ejercicio-secante">Ejercicio</label>
+            <input type="text" id="ejercicio-secante" name="ejercicio">
+          </div>
+          <div class="form-group">
+            <label for="funcion-secante">f(x)</label>
+            <input type="text" id="funcion-secante" name="funcion">
+          </div>
+          <div class="form-group">
+            <label for="x0-secante">X<sub>i</sub></label>
+            <input type="text" id="x0-secante" name="x0">
+          </div>
+          <div class="form-group">
+            <label for="x1-secante">X<sub>i-1</sub></label>
+            <input type="text" id="x1-secante" name="x1">
+          </div>
+          <div class="form-group">
+            <label for="es-secante">Es%</label>
+            <input type="text" id="es-secante" name="es">
+          </div>
+        </div>
+        <div class="botones-biseccion">
+          <button type="button" onclick="buscarPorEjercicioSecante(event)">🔍 Buscar</button>
+          <button onclick="eliminarEjercicioSecante(event)">🗑️ Eliminar</button>
+          <button type="submit">Calcular</button>
+          <button onclick="actualizarEjercicioSecante(event)">🔄 Actualizar</button>
+        </div>
+      </form>
+  
+      <div class="tabla-contenedor">
+        <h2>Resultados del Método de la Secante</h2>
+        <div class="tabla-scroll">
+          <table id="tabla-resultados-secante">
+            <thead>
+              <tr>
+                <th>Ejercicio</th>
+                <th>Iteración</th>
+                <th>X<sub>i</sub></th>
+                <th>X<sub>i-1</sub></th>
+                <th>f(X<sub>i</sub>)</th>
+                <th>f(X<sub>i-1</sub>)</th>
+                <th>X<sub>i+1</sub></th>
+                <th>Ea (%)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Aquí se insertan los datos de Secante -->
+            </tbody>
+          </table>
+        </div>
+        <div style="margin-top: 20px; text-align: center;">
+          <button onclick="exportarTabla('tabla-resultados-secante', 'secante_resultados.xlsx', 'Secante')" 
+                  style="background-color: #004d40; color: white; padding: 10px 20px; border-radius: 8px; font-weight: bold; font-size: 16px; cursor: pointer; transition: background-color 0.3s;"
+                  onmouseover="this.style.backgroundColor='#00796b'; this.style.transform='scale(1.05)';"
+                  onmouseout="this.style.backgroundColor='#004d40'; this.style.transform='scale(1)';">
+            📄 Exportar a Excel
+          </button>
+        </div>
+        
+      </div>
+      <div class="grafica-container">
+        <h2>Gráfica del Método de la Secante</h2>
+        <div class="selector">
+          <label for="ejercicioSelectSecante">Seleccionar ejercicio:</label>
+          <select id="ejercicioSelectSecante" onchange="cargarGraficaSecante()"></select>
+        </div>
+        <iframe id="grafica-interactiva-secante" style="width:100%; height:500px; border:none;"></iframe>
+      </div>
+      
+    </div>
+  </section>
+  
+
+  <section id="senl" class="senl-scroll-section">
+    <hr class="linea-seccion">
+    <div class="titulo-metodo">
+      Método Newton-Raphson para Sistemas
+    </div>
+    <div class="contenido-scroll">
+      <form action="http://127.0.0.1:5000/newton-sistemas" method="POST">
+        <div class="form-row">
+      
+          <div class="form-group">
+            <label for="ejercicio-newton-sistemas">Ejercicio</label>
+            <input type="text" id="ejercicio-newton-sistemas" name="ejercicio">
+          </div>
+      
+          <div class="form-group">
+            <label for="funcion1">Función 1 f(x,y)</label>
+            <input type="text" id="funcion1" name="vector_funciones">
+          </div>
+      
+          <div class="form-group">
+            <label for="funcion2">Función 2 g(x,y)</label>
+            <input type="text" id="funcion2" name="vector_funciones">
+          </div>
+      
+          <div class="form-group">
+            <label for="j11">Jacobiano J11</label>
+            <input type="text" id="j11" name="jacobiano">
+          </div>
+      
+          <div class="form-group">
+            <label for="j12">Jacobiano J12</label>
+            <input type="text" id="j12" name="jacobiano">
+          </div>
+      
+          <div class="form-group">
+            <label for="j21">Jacobiano J21</label>
+            <input type="text" id="j21" name="jacobiano">
+          </div>
+      
+          <div class="form-group">
+            <label for="j22">Jacobiano J22</label>
+            <input type="text" id="j22" name="jacobiano">
+          </div>
+      
+          <div class="form-group">
+            <label for="x-inicial">x inicial</label>
+            <input type="text" id="x-inicial" name="x_inicial">
+          </div>
+      
+          <div class="form-group">
+            <label for="y-inicial">y inicial</label>
+            <input type="text" id="y-inicial" name="y_inicial">
+          </div>
+      
+          <div class="form-group">
+            <label for="es-newton-sistemas">Es%</label>
+            <input type="text" id="es-newton-sistemas" name="es">
+          </div>
+      
+        </div>
+      
+        <div class="botones-biseccion">
+          <button onclick="eliminarEjercicioNewtonSistemas(event)">🗑️ Eliminar</button>
+          <button type="submit">Calcular</button>
+          <button onclick="actualizarEjercicioNewtonSistemas(event)">🔄 Actualizar</button>
+        </div>
+      </form>
+      
+  
+      <div class="tabla-contenedor">
+        <h2>Resultados Newton-Raphson Sistemas</h2>
+        <div class="tabla-scroll">
+          <table id="tabla-resultados-newton-sistemas">
+            <thead>
+              <tr>
+                <th>Ejercicio</th>
+                <th>Iteración</th>
+                <th>X</th>
+                <th>Vector F</th>
+                <th>Matriz J</th>
+                <th>Inversa J</th>
+                <th>Xi</th>
+                <th>Ea</th>
+              </tr>
+            </thead>
+            
+            <tbody>
+              <!-- Resultados aquí -->
+            </tbody>
+          </table>
+        </div>
+  
+        <div style="margin-top: 20px; text-align: center;">
+          <button onclick="exportarTabla('tabla-resultados-newton-sistemas', 'newton_sistemas_resultados.xlsx', 'NewtonSistemas')" 
+                  style="background-color: #004d40; color: white; padding: 10px 20px; border-radius: 8px; font-weight: bold; font-size: 16px; cursor: pointer; transition: background-color 0.3s;"
+                  onmouseover="this.style.backgroundColor='#00796b'; this.style.transform='scale(1.05)';"
+                  onmouseout="this.style.backgroundColor='#004d40'; this.style.transform='scale(1)';">
+            📄 Exportar a Excel
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+
+
+
+
+  <section id="fin" class="fin-scroll-section">
+    <hr class="linea-seccion">
+  
+    <div class="titulo-metodo">
+      ¡Además de lo aprendido!
+    </div>
+  
+    <div class="contenido-scroll" style="text-align: center; padding: 30px;">
+  
+      <!-- Texto inicial -->
+      <p style="font-size: 20px; max-width: 850px; margin: 0 auto; color: #444; line-height: 1.8;">
+        Esta plataforma ha sido desarrolada por fines educativos. 
+      </p>
+      <p style="font-size: 20px; max-width: 850px; margin: 30px auto 40px; color: #444; line-height: 1.8;">
+        En este proyecto pusimos en práctica diferentes métodos numéricos como Bisección, Falsa Posición, Punto Fijo, Newton-Raphson, Secante y también Newton-Raphson para sistemas de ecuaciones no lineales.
+      </p>
+      <p style="font-size: 20px; max-width: 850px; margin: 30px auto 40px; color: #444; line-height: 1.8;">
+        Cada método fue trabajado con su propio formulario, su tabla de resultados y una explicación clara. Además, fuimos mejorando el diseño del sitio web para que todo fuera más ordenado, fácil de usar y visualmente agradable.
+      </p>
+      <p style="font-size: 20px; max-width: 850px; margin: 30px auto 40px; color: #444; line-height: 1.8;">
+        Este portar ha sido un gran esfuerzo, porque no solo aprendimos a aplicar los métodos, sino también a organizar mejor la información usando distintas herramientas.  
+
+      </p >  
+
+            <div style="background-color: #e0f7fa; margin-top: 50px; padding: 30px; border-radius: 12px; max-width: 850px; margin-left: auto; margin-right: auto; transition: transform 0.3s; text-align: center;"
+            onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+      
+        <h2 style="color: #004d40; font-size: 24px; margin-bottom: 20px;">📚 Elaborado por:</h2>
+      
+        <p style="font-size: 18px; color: #444; line-height: 1.8; margin: 10px 0;">
+          Roger Martin Perez Castillo<br>
+          Andrea Sofia Ramirez Centeno<br>
+          Guadalupe Del Carmen Tellez Palacio
+        </p>
+      
+        <p style="font-size: 18px; color: #444; margin-top: 25px; margin-bottom: 5px;"><strong>Grupo:</strong> 3M1-SIS</p>
+        <p style="font-size: 18px; color: #444; margin: 5px 0;"><strong>Asignatura:</strong> Métodos Numéricos</p>
+        <p style="font-size: 18px; color: #444; margin-top: 5px;"><strong>Docente:</strong> Elizabeth del Carmen Gutiérrez Urbina</p>
+      
+      </div>
+
+
+
+
+      <!-- Subtítulo -->
+      <h2 style="color: #004d40; font-weight: bold; margin-bottom: 30px; font-family: 'Segoe UI', sans-serif; font-size: 26px;">
+        ESTE SITIO ESTÁ DESARROLLADO CON:
+      </h2>
+ 
+      <!-- Lenguajes y tecnologías -->
+      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px;">
+        
+        <!-- Python -->
+        <div style="background-color: #306998; color: white; padding: 10px 20px; border-radius: 8px; font-weight: bold; font-size: 16px; display: flex; align-items: center; gap: 8px; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+          <img src="https://cdn-icons-png.flaticon.com/512/5968/5968350.png" alt="Python" style="width: 24px;">
+          Python
+        </div>
+  
+        <!-- HTML5 -->
+        <div style="background-color: #e34c26; color: white; padding: 10px 20px; border-radius: 8px; font-weight: bold; font-size: 16px; display: flex; align-items: center; gap: 8px; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+          <img src="https://cdn-icons-png.flaticon.com/512/732/732212.png" alt="HTML5" style="width: 24px;">
+          HTML5
+        </div>
+  
+        <!-- CSS3 -->
+        <div style="background-color: #264de4; color: white; padding: 10px 20px; border-radius: 8px; font-weight: bold; font-size: 16px; display: flex; align-items: center; gap: 8px; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+          <img src="https://cdn-icons-png.flaticon.com/512/732/732190.png" alt="CSS3" style="width: 24px;">
+          CSS3
+        </div>
+  
+        <!-- JavaScript -->
+        <div style="background-color: #f7df1e; color: #000; padding: 10px 20px; border-radius: 8px; font-weight: bold; font-size: 16px; display: flex; align-items: center; gap: 8px; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+          <img src="https://cdn-icons-png.flaticon.com/512/5968/5968292.png" alt="JavaScript" style="width: 24px;">
+          JavaScript
+        </div>
+        
+      </div>
+
+
+        <!-- Frameworks y Librerías -->
+      <h2 style="color: #004d40; font-weight: bold; margin-bottom: 30px; font-family: 'Segoe UI', sans-serif; font-size: 26px; text-align: center;">
+        LIBRERÍAS
+      </h2>
+
+      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-top: 20px;">
+
+        <!-- Flask -->
+        <div style="background-color: #000000; color: white; padding: 10px 20px; border-radius: 8px; font-weight: bold; font-size: 16px; font-family: 'Segoe UI', sans-serif; display: flex; align-items: center; gap: 8px; transition: transform 0.3s;" 
+            onmouseover="this.style.transform='scale(1.05)'" 
+            onmouseout="this.style.transform='scale(1)'">
+          Flask
+        </div>
+
+        <!-- MySQL Connector -->
+        <div style="background-color: #00758f; color: white; padding: 10px 20px; border-radius: 8px; font-weight: bold; font-size: 16px; font-family: 'Segoe UI', sans-serif; display: flex; align-items: center; gap: 8px; transition: transform 0.3s;" 
+            onmouseover="this.style.transform='scale(1.05)'" 
+            onmouseout="this.style.transform='scale(1)'">
+          MySQL Connector
+        </div>
+
+        <!-- Math (librería estándar) -->
+        <div style="background-color: #388e3c; color: white; padding: 10px 20px; border-radius: 8px; font-weight: bold; font-size: 16px; font-family: 'Segoe UI', sans-serif; display: flex; align-items: center; gap: 8px; transition: transform 0.3s;" 
+            onmouseover="this.style.transform='scale(1.05)'" 
+            onmouseout="this.style.transform='scale(1)'">
+          Math
+        </div>
+        <!-- Plotly -->
+        <div style="background-color: #ff7043; color: white; padding: 10px 20px; border-radius: 8px; font-weight: bold; font-size: 16px; font-family: 'Segoe UI', sans-serif; display: flex; align-items: center; gap: 8px; transition: transform 0.3s;"
+            onmouseover="this.style.transform='scale(1.05)'" 
+            onmouseout="this.style.transform='scale(1)'">
+          Plotly
+        </div>
+
+        <!-- NumPy -->
+        <div style="background-color: #1976d2; color: white; padding: 10px 20px; border-radius: 8px; font-weight: bold; font-size: 16px; font-family: 'Segoe UI', sans-serif; display: flex; align-items: center; gap: 8px; transition: transform 0.3s;"
+            onmouseover="this.style.transform='scale(1.05)'" 
+            onmouseout="this.style.transform='scale(1)'">
+          NumPy
+        </div>
+
+        <!-- OS -->
+        <div style="background-color: #6d4c41; color: white; padding: 10px 20px; border-radius: 8px; font-weight: bold; font-size: 16px; font-family: 'Segoe UI', sans-serif; display: flex; align-items: center; gap: 8px; transition: transform 0.3s;"
+            onmouseover="this.style.transform='scale(1.05)'" 
+            onmouseout="this.style.transform='scale(1)'">
+          OS
+        </div>
+      </div>
+
+
+       <!-- Software y Herramientas -->
+      <h2 style="color: #00bcd4; font-weight: bold; margin: 50px 0 20px; font-family: 'Segoe UI', sans-serif; font-size: 26px; text-align: center;">
+        SOFTWARE Y HERRAMIENTAS
+      </h2>
+
+      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-bottom: 40px;">
+
+        <!-- Visual Studio Code -->
+        <div style="background-color: #0078d7; color: white; padding: 10px 20px; border-radius: 8px; font-weight: bold; font-size: 16px; display: inline-flex; align-items: center; gap: 8px; transition: transform 0.3s; cursor: pointer;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+          Visual Studio Code
+        </div>
+
+        <!-- MySQL -->
+        <div style="background-color: #00758f; color: white; padding: 10px 20px; border-radius: 8px; font-weight: bold; font-size: 16px; display: flex; align-items: center; gap: 8px; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+          <img src="https://cdn-icons-png.flaticon.com/512/919/919836.png" alt="MySQL" style="width: 24px;">
+          MySQL
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+<!-- PIE DE PÁGINA -->
+<footer style="background-color: #004d40; color: #ffffff; text-align: center; padding: 20px 10px; font-size: 16px; margin-top: 50px; font-family: 'Segoe UI', sans-serif;">
+  
+  <p style="margin: 0; color: #ffffff;">
+    © 2025 Métodos Numéricos | Todos los derechos reservados.
+  </p>
+  <p style="margin: 5px 0 0 0; font-size: 14px; color: #ffffff;">
+    Diseñado para fines educativos | Proyecto Universitario
+  </p>
+
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="Funciones.js"></script>
+</body>
+</html>
