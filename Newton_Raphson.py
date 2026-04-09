@@ -64,7 +64,7 @@ def ejecutar_newton_raphson():
                 break
             i += 1
 
-        conn = mysql.connector.connect(host="localhost", user="root", password="root", database="metodos_numericos")
+        conn = mysql.connector.connect(host="localhost", user="root", password="", database="metodos_numericos")
         cursor = conn.cursor()
         cursor.execute("DELETE FROM metodo_newton_raphson WHERE ejercicio = %s", (ejercicio,))
         for fila in resultados:
@@ -87,7 +87,7 @@ def ejecutar_newton_raphson():
 @newton_bp.route('/resultados-newton-raphson')
 def ver_resultados_newton_raphson():
     try:
-        conn = mysql.connector.connect(host="localhost", user="root", password="root", database="metodos_numericos")
+        conn = mysql.connector.connect(host="localhost", user="root", password="", database="metodos_numericos")
         cursor = conn.cursor()
         cursor.execute("""
             SELECT ejercicio, iteracion, xi, fxi, dfxi, xi1, ea
@@ -105,7 +105,7 @@ def ver_resultados_newton_raphson():
 @newton_bp.route('/eliminar-newton-raphson/<int:ejercicio>', methods=['DELETE'])
 def eliminar_newton_raphson(ejercicio):
     try:
-        conn = mysql.connector.connect(host="localhost", user="root", password="root", database="metodos_numericos")
+        conn = mysql.connector.connect(host="localhost", user="root", password="", database="metodos_numericos")
         cursor = conn.cursor()
         cursor.execute("DELETE FROM metodo_newton_raphson WHERE ejercicio = %s", (ejercicio,))
         conn.commit()
@@ -120,7 +120,7 @@ def eliminar_newton_raphson(ejercicio):
 def actualizar_newton_raphson():
     ejercicio = int(request.form['ejercicio'])
 
-    conn = mysql.connector.connect(host="localhost", user="root", password="root", database="metodos_numericos")
+    conn = mysql.connector.connect(host="localhost", user="root", password="", database="metodos_numericos")
     cursor = conn.cursor()
     cursor.execute("DELETE FROM metodo_newton_raphson WHERE ejercicio = %s", (ejercicio,))
     conn.commit()

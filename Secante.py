@@ -208,7 +208,7 @@ def ver_resultados_secante():
 @secante_bp.route('/eliminar-secante/<int:ejercicio>', methods=['DELETE'])
 def eliminar_secante(ejercicio):
     try:
-        conn = mysql.connector.connect(host="localhost", user="root", password="root", database="metodos_numericos")
+        conn = mysql.connector.connect(host="localhost", user="root", password="", database="metodos_numericos")
         cursor = conn.cursor()
         cursor.execute("DELETE FROM metodo_secante WHERE ejercicio = %s", (ejercicio,))
         conn.commit()
@@ -238,7 +238,7 @@ def actualizar_secante():
 def buscar_ejercicio_secante(ejercicio):
     try:
         conn = mysql.connector.connect(
-            host="localhost", user="root", password="root", database="metodos_numericos")
+            host="localhost", user="root", password="", database="metodos_numericos")
         cursor = conn.cursor(dictionary=True)
 
         cursor.execute("""
