@@ -53,7 +53,7 @@ def ejecutar_punto_fijo():
                 break
             i += 1
 
-        conn = mysql.connector.connect(host="localhost", user="root", password="root", database="metodos_numericos")
+        conn = mysql.connector.connect(host="localhost", user="root", password="", database="metodos_numericos")
         cursor = conn.cursor()
         cursor.execute("DELETE FROM metodo_punto_fijo WHERE ejercicio = %s", (ejercicio,))
         for fila in resultados:
@@ -127,7 +127,7 @@ def ejecutar_punto_fijo():
 @puntofijo_bp.route('/resultados-punto-fijo')
 def ver_resultados_punto_fijo():
     try:
-        conn = mysql.connector.connect(host="localhost", user="root", password="root", database="metodos_numericos")
+        conn = mysql.connector.connect(host="localhost", user="root", password="", database="metodos_numericos")
         cursor = conn.cursor()
         cursor.execute("""
             SELECT ejercicio, iteracion, xi, gxi, ea
@@ -144,7 +144,7 @@ def ver_resultados_punto_fijo():
 @puntofijo_bp.route('/eliminar-punto-fijo/<int:ejercicio>', methods=['DELETE'])
 def eliminar_punto_fijo(ejercicio):
     try:
-        conn = mysql.connector.connect(host="localhost", user="root", password="root", database="metodos_numericos")
+        conn = mysql.connector.connect(host="localhost", user="root", password="", database="metodos_numericos")
         cursor = conn.cursor()
         cursor.execute("DELETE FROM metodo_punto_fijo WHERE ejercicio = %s", (ejercicio,))
         conn.commit()
@@ -158,7 +158,7 @@ def eliminar_punto_fijo(ejercicio):
 def actualizar_punto_fijo():
     ejercicio = int(request.form['ejercicio'])
 
-    conn = mysql.connector.connect(host="localhost", user="root", password="root", database="metodos_numericos")
+    conn = mysql.connector.connect(host="localhost", user="root", password="", database="metodos_numericos")
     cursor = conn.cursor()
     cursor.execute("DELETE FROM metodo_punto_fijo WHERE ejercicio = %s", (ejercicio,))
     conn.commit()
@@ -175,7 +175,7 @@ def actualizar_punto_fijo():
 def buscar_ejercicio_puntofijo(ejercicio):
     try:
         conn = mysql.connector.connect(
-            host="localhost", user="root", password="root", database="metodos_numericos")
+            host="localhost", user="root", password="", database="metodos_numericos")
         cursor = conn.cursor(dictionary=True)
 
         cursor.execute("""

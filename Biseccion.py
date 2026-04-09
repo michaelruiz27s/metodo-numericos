@@ -68,7 +68,7 @@ def ejecutar_biseccion():
             i += 1
 
         # Guardar resultados en MySQL
-        conn = mysql.connector.connect(host="localhost", user="root", password="root", database="metodos_numericos")
+        conn = mysql.connector.connect(host="127.0.0.1", user="root", password="", database="metodos_numericos")
         cursor = conn.cursor()
         cursor.execute("DELETE FROM metodo_biseccion WHERE ejercicio = %s", (ejercicio,))
         for fila in resultados:
@@ -158,7 +158,7 @@ def ejecutar_biseccion():
 @biseccion_bp.route('/resultados-biseccion')
 def resultados_biseccion():
     try:
-        conn = mysql.connector.connect(host="localhost", user="root", password="root", database="metodos_numericos")
+        conn = mysql.connector.connect(host="localhost", user="root", password="", database="metodos_numericos")
         cursor = conn.cursor()
         cursor.execute("""
             SELECT ejercicio, iteracion, xa, xb, fxa, fxb, xr, fxr, ea
@@ -174,7 +174,7 @@ def resultados_biseccion():
 @biseccion_bp.route('/eliminar-biseccion/<int:ejercicio>', methods=['DELETE'])
 def eliminar_biseccion(ejercicio):
     try:
-        conn = mysql.connector.connect(host="localhost", user="root", password="root", database="metodos_numericos")
+        conn = mysql.connector.connect(host="localhost", user="root", password="", database="metodos_numericos")
         cursor = conn.cursor()
         
         # Elimina todas las filas que pertenezcan a ese ejercicio
@@ -193,7 +193,7 @@ def actualizar_biseccion():
         ejercicio = int(request.form['ejercicio'])
 
         # Elimina registros antiguos
-        conn = mysql.connector.connect(host="localhost", user="root", password="root", database="metodos_numericos")
+        conn = mysql.connector.connect(host="localhost", user="root", password="", database="metodos_numericos")
         cursor = conn.cursor()
         cursor.execute("DELETE FROM metodo_biseccion WHERE ejercicio = %s", (ejercicio,))
         conn.commit()
@@ -217,7 +217,7 @@ def actualizar_biseccion():
 def buscar_ejercicio(ejercicio):
     try:
         conn = mysql.connector.connect(
-            host="localhost", user="root", password="root", database="metodos_numericos")
+            host="localhost", user="root", password="", database="metodos_numericos")
         cursor = conn.cursor(dictionary=True)
 
         cursor.execute("""

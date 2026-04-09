@@ -77,7 +77,7 @@ def ejecutar_falsa_posicion():
                 xa = xr
             i += 1
 
-        conn = mysql.connector.connect(host="localhost", user="root", password="root", database="metodos_numericos")
+        conn = mysql.connector.connect(host="localhost", user="root", password="", database="metodos_numericos")
         cursor = conn.cursor()
         cursor.execute("DELETE FROM metodo_falsa_posicion WHERE ejercicio = %s", (ejercicio,))
         for fila in resultados:
@@ -163,7 +163,7 @@ def ejecutar_falsa_posicion():
 @falsa_bp.route('/resultados-falsa-posicion')
 def ver_resultados_falsa_posicion():
     try:
-        conn = mysql.connector.connect(host="localhost", user="root", password="root", database="metodos_numericos")
+        conn = mysql.connector.connect(host="localhost", user="root", password="", database="metodos_numericos")
         cursor = conn.cursor()
         cursor.execute("""
             SELECT ejercicio, iteracion, xa, xb, fxa, fxb, xr, fxr, ea
@@ -180,7 +180,7 @@ def ver_resultados_falsa_posicion():
 @falsa_bp.route('/eliminar-falsa-posicion/<int:ejercicio>', methods=['DELETE'])
 def eliminar_falsa_posicion(ejercicio):
     try:
-        conn = mysql.connector.connect(host="localhost", user="root", password="root", database="metodos_numericos")
+        conn = mysql.connector.connect(host="localhost", user="root", password="", database="metodos_numericos")
         cursor = conn.cursor()
         cursor.execute("DELETE FROM metodo_falsa_posicion WHERE ejercicio = %s", (ejercicio,))
         conn.commit()
@@ -194,7 +194,7 @@ def eliminar_falsa_posicion(ejercicio):
 def actualizar_falsa_posicion():
     ejercicio = int(request.form['ejercicio'])
 
-    conn = mysql.connector.connect(host="localhost", user="root", password="root", database="metodos_numericos")
+    conn = mysql.connector.connect(host="localhost", user="root", password="", database="metodos_numericos")
     cursor = conn.cursor()
     cursor.execute("DELETE FROM metodo_falsa_posicion WHERE ejercicio = %s", (ejercicio,))
     conn.commit()
@@ -210,7 +210,7 @@ def actualizar_falsa_posicion():
 def buscar_ejercicio_falsa(ejercicio):
     try:
         conn = mysql.connector.connect(
-            host="localhost", user="root", password="root", database="metodos_numericos")
+            host="localhost", user="root", password="", database="metodos_numericos")
         cursor = conn.cursor(dictionary=True)
 
         cursor.execute("""
