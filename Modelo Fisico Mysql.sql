@@ -89,6 +89,17 @@ CREATE TABLE metodo_newton_sistemas (
     e2 DOUBLE
 );
 
+CREATE TABLE metodo_muller (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    ejercicio INT NOT NULL,
+    iteracion INT NOT NULL,
+    x0 DOUBLE,
+    x1 DOUBLE,
+    x2 DOUBLE,
+    x3 DOUBLE,
+    fx3 DOUBLE,
+    ea DOUBLE
+);
 
 
 
